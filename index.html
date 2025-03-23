@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>My IHC Scoring Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>IHC Stain Detective 🕵️</h1>
+    <!-- Instructions Section -->
+    <div class="card">
+        <div id="instructions">
+            <div id="textDisplay"></div>
+        <button id="nextButton" onclick="showNextLine()">Start</button>
+        </div>
+    </div>
+    <button id="exampleButton" onclick="goToExample()">See Example Scoring</button>
+
+    <button id="startGameButton" onclick="startGame()" style="display: none;">Start Game</button>
+
+    <script>
+        function goToExample() {
+            window.location.href = "example.html";
+        }
+
+        function startGame() {
+            document.getElementById("startGameButton").style.display = "none"; // Hide start button
+        }
+    </script>
+    <!-- Game Section (Initially Hidden) -->
+    <div class="card" id="game" style="display: none;">
+        <div id="scoringKey">
+            <h3>Scoring Key:</h3>
+            <p><b>1. Discernible Pathology (DP):</b> How much contrast is there between the cells and the background?</p>
+            <p><b>2. Background Noise (BN):</b> How dark is the space between cells?</p>
+            <p><b>3. Uniform Staining (US):</b> How consistent/even is the staining?</p>
+        </div>
+        <!-- Round and Points Tracker -->
+        <div id="trackers">
+            <p>Round: <span id="roundTracker">1</span></p>
+            <p>Points: <span id="pointTracker">0</span></p>
+        </div>
+        <h2>Score This IHC Sample</h2>
+        <img id="gameImage" src="ihc_sample1.jpeg" alt="IHC Tissue Sample" width="400">
+        
+        <div id="imageDescription" style="display: none; color: white; background-color: black; padding: 10px; border-radius: 5px;">
+        </div>
+        <button onclick="toggleDescription()"> 🧐 Curious about the image?</button>
+
+
+        <p>Enter your scores (1-10):</p>
+        <label for="dp">Discernible Pathology (DP):</label>
+        <input type="number" id="dp" min="1" max="10"><br>
+
+        <label for="bn">Background Noise (BN):</label>
+        <input type="number" id="bn" min="1" max="10"><br>
+
+        <label for="us">Uniform Staining (US):</label>
+        <input type="number" id="us" min="1" max="10"><br>
+
+        <button onclick="calculateScore()">Submit Score</button>
+        <p id="result"></p>
+        <button id="restartButton" onclick="restartGame()" style="display: none;">Restart Game</button>
+    </div>
+    <!-- Background Music (Hidden Audio Element) -->
+    <audio id="backgroundMusic" loop>
+        <source src="background.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Mute/Unmute Button (Initially Hidden) -->
+    <button id="musicToggle">🔊 Mute Music</button>
+    <!-- Winning Sound -->
+    <audio id="WinSound">
+        <source src="WinSound.wav" type="audio/mpeg">
+    </audio>
+
+    <!-- Losing Sound -->
+    <audio id="LoseSound">
+        <source src="LoseSound.mp3" type="audio/mpeg">
+    </audio>
+
+    </body>
+    <script src="script.js"></script> <!-- Link JavaScript -->

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Game Over</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Style the final score */
+        #finalScore {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin: 20px 0;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Style the button */
+        button {
+            background-color: #ff5722;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #e64a19;
+        }
+
+        /* Fade-in effect */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <h1>Game Over!</h1>
+    <p id="finalScore"></p>
+    <button onclick="restartGame()">Try Again</button>
+
+    <script>
+        // Get the final score from the URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        let scoreString = urlParams.get('score') || "0/5"; // Default to "0/5" if missing
+
+        // Extract player points from "X/Y" format (e.g., "3/5" → 3)
+        let score = parseInt(scoreString.split('/')[0], 10);
+
+        console.log("Extracted Score:", score); // Debugging
+
+        // Generate a feedback message based on performance
+        let message = "";
+        if (score >= 4) {
+            message = "🌟 Wow! You're a staining expert!";
+        } else if (score >= 2) {
+            message = "👍 Good job! Keep practicing!";
+        } else {
+            message = "🔍 Keep trying! You'll get better!";
+        }
+
+        // Display the final score with feedback
+        document.getElementById("finalScore").innerHTML = `You got <b>${score}</b>/5 points! <br> ${message}`;
+
+        function restartGame() {
+            window.location.href = "index.html"; // Redirect back to main game page
+        }
+    </script>
+</body>
+</html>

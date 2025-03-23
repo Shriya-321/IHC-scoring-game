@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example IHC Scoring</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+            background-color: #f8f1e5; /* Matches game background */
+        }
+        .image-container {
+            margin: 20px auto;
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 3px solid #555;
+        }
+        .score-breakdown {
+            text-align: left;
+            max-width: 600px;
+            margin: auto;
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 10px;
+            line-height: 1.6;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+        button:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <h1>Example IHC Scoring</h1>
+    <p>Here is an example of how an IHC image is scored. Scores can include decimals!</p>
+
+    <div class="image-container">
+        <img src="example_ihc.jpeg" alt="Example IHC Image">
+    </div>
+
+    <div class="score-breakdown">
+        <h2>Score Breakdown</h2>
+        <p><strong>Discernible Pathology (DP):</strong> 8.0 - There's a good contrast between cells and the background!</p>
+        <p><strong>Background Noise (BN):</strong> 1.5 - Not a lot of staining in the background. We like this!</p>
+        <p><strong>Uniform Staining (US):</strong> 9.1 - Not a lot of splotches...the distribution of staining is great!</p>
+        <p><strong>Final Score:</strong> Calculated using the formula: <br>
+            0.55 × DP + 0.25 × (10 - BN) + 0.20 × US = <strong>8.345</strong></p>
+    </div>
+
+    <button onclick="startGame()">Proceed to Game</button>
+
+    <script>
+        function startGame() {
+            window.location.href = "index.html#game"; // Redirects to the game
+        }
+    </script>
+</body>
+</html>
